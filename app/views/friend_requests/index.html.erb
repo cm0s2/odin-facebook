@@ -1,0 +1,18 @@
+<h1>FriendRequest#index</h1>
+<p>Find me in app/views/friend_requests/index.html.erb</p>
+
+<h2>Incoming</h2>
+
+<% if @incoming.any? %>
+Incoming is set
+<% end %>
+
+<h2>Outgoing</h2>
+
+<% if @outgoing.any? %>
+  <ul>
+    <% @outgoing.each do |friend_request| %>
+    <li><%= friend_request.friend.email %></li>
+    <% end %>
+  </ul>
+<% end %>
