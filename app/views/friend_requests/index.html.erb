@@ -12,7 +12,7 @@ Incoming is set
 <% if @outgoing.any? %>
   <ul>
     <% @outgoing.each do |friend_request| %>
-    <li><%= friend_request.friend.email %></li>
+    <li><%= friend_request.friend.name %></li>
     <% end %>
   </ul>
 <% end %>

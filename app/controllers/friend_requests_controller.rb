@@ -23,8 +23,11 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
+    friend = @friend_request.friend
     @friend_request.destroy
-    head :no_content
+
+    redirect_to user_path(friend)
+    # head :no_content
   end
 
   private

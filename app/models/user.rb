@@ -8,4 +8,11 @@ class User < ApplicationRecord
   has_many :pending_friends, through: :friend_requests, source: :friend
 
   # TODO: Lägg till metod för att kolla om man är vän
+  def name
+    email
+  end
+  
+  def is_friends_with?(friend)
+    pending_friends.include?(friend)
+  end
 end
