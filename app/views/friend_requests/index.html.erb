@@ -4,7 +4,13 @@
 <h2>Incoming</h2>
 
 <% if @incoming.any? %>
-Incoming is set
+  <ul>
+    <% @incoming.each do |friend_request| %>
+    <li>
+      <%= link_to friend_request.user.name, friend_request.user %> 
+    </li>
+    <% end %>
+  </ul>
 <% end %>
 
 <h2>Outgoing</h2>
@@ -12,7 +18,9 @@ Incoming is set
 <% if @outgoing.any? %>
   <ul>
     <% @outgoing.each do |friend_request| %>
-    <li><%= friend_request.friend.name %></li>
+    <li>
+      <%= link_to friend_request.friend.name, friend_request.friend %> <%= link_to "Withdraw friend request", friend_request_path(friend_request), data: {turbo_method: :delete } %>
+    </li>
     <% end %>
   </ul>
 <% end %>

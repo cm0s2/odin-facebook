@@ -5,5 +5,5 @@
 <% unless current_user.pending_friends.include?(@user) %>
   <%= link_to "Send friend request", friend_requests_path(friend_id: @user.id), data: {turbo_method: :post } %>
 <% else %>
-  <%= link_to "Cancel friend request", friend_request_path(FriendRequest.find_by(friend_id: @user.id).id), data: {turbo_method: :delete } %>
+  <%= link_to "Withdraw friend request", friend_request_path(FriendRequest.find_by(friend_id: @user.id).id), data: {turbo_method: :delete } %>
 <% end %>

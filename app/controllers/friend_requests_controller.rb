@@ -26,7 +26,7 @@ class FriendRequestsController < ApplicationController
     friend = @friend_request.friend
     @friend_request.destroy
 
-    redirect_to user_path(friend)
+    redirect_back fallback_location: friend_requests_path
     # head :no_content
   end
 
