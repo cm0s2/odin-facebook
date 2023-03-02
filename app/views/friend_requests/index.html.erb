@@ -7,7 +7,7 @@
   <ul>
     <% @incoming.each do |friend_request| %>
     <li>
-      <%= link_to friend_request.user.name, friend_request.user %> 
+      <%= link_to friend_request.user.name, friend_request.user %> <%= link_to "Confirm", friend_request_path(friend_request), data: {turbo_method: :put } %> <%= link_to "Delete", friend_request_path(friend_request), data: {turbo_method: :delete } %>
     </li>
     <% end %>
   </ul>
