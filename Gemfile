@@ -74,3 +74,5 @@ group :test do
 end
 
 gem "bulma-rails", "~> 0.9.4"
+
+gem "font-awesome-sass", "~> 6.3"
