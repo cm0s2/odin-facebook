@@ -3,14 +3,26 @@
 
 <h2>Incoming</h2>
 
+<%= turbo_frame_tag "notifications" do %>
+
 <% if @incoming.any? %>
+<p><strong>Friend invites</strong></p>
   <ul>
     <% @incoming.each do |friend_request| %>
     <li>
-      <%= link_to friend_request.user.name, friend_request.user %> <%= link_to "Confirm", friend_request_path(friend_request), data: {turbo_method: :put } %> <%= link_to "Delete", friend_request_path(friend_request), data: {turbo_method: :delete } %>
+      <%= link_to friend_request.user.name, friend_request.user %> 
+      <div class="is-grouped">
+        <%= link_to "Confirm", friend_request_path(friend_request), class: "button is-small is-link", data: {turbo_method: :put } %> 
+        <%= link_to "Delete", friend_request_path(friend_request), class: "button is-small is-danger", data: {turbo_method: :delete } %>
+      </div>
     </li>
     <% end %>
   </ul>
+
+<% else %>
+No notifications
+<% end %>
+
 <% end %>
 
 <h2 class="title">Outgoing</h2>
@@ -24,3 +36,4 @@
     <% end %>
   </ul>
 <% end %>
+

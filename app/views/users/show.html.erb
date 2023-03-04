@@ -1,9 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= @user.name %>
+<h1><%= @user.name %></h1>
+<p>User profile goes here 😊</p>
 
+<% unless @user == current_user %>
 <% unless current_user.pending_friends.include?(@user) %>
   <%= link_to "Send friend request", friend_requests_path(friend_id: @user.id), data: {turbo_method: :post } %>
 <% else %>
   <%= link_to "Withdraw friend request", friend_request_path(FriendRequest.find_by(friend_id: @user.id).id), data: {turbo_method: :delete } %>
+<% end %>
 <% end %>

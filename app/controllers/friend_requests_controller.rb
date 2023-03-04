@@ -21,7 +21,7 @@ class FriendRequestsController < ApplicationController
 
   def update
     @friend_request.accept
-    head :no_content
+    redirect_back fallback_location: friend_requests_path
   end
 
   def destroy
