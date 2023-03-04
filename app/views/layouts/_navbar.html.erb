@@ -45,7 +45,9 @@
     </div>
 
     <div class="navbar-end">
-      <% if current_user %><p class="navbar-item"><%= current_user.name %></p><% end %>
+      <% if current_user %>
+        <%= link_to current_user.name, current_user, class: "navbar-item" %>
+      <% end %>
       <div class="navbar-item">
         <div class="buttons">
           <% if current_user %>
