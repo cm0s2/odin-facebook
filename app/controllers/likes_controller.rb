@@ -1,8 +1,6 @@
 class LikesController < ApplicationController
 
   def create
-    puts "test"
-    p params
     @like = current_user.likes.new(like_params)
 
     @like.save
