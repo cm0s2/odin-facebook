@@ -13,7 +13,7 @@
         <br>
         <small><%= pluralize(post.likes.count, 'like') %> · <%= pluralize(post.comments.count, 'comment') %>  · <%= time_ago_in_words(post.created_at) %> ago</small>
         <br>
-        <small><%= render partial: 'likes/like', locals: { likeable: post } %> · <a>Reply</a></small>
+        <small><%= render partial: 'likes/like', locals: { likeable: post } %> · <%= link_to "Reply", post %></small>
       </p>
     </div>
   </div>
