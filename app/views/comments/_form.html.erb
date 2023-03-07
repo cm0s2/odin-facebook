@@ -1,0 +1,25 @@
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="https://bulma.io/images/placeholders/128x128.png">
+    </p>
+  </figure>
+  <div class="media-content">
+  <%= form_with(model: comment) do |form| %>
+    <div class="field">
+      <p class="control">
+        <%= form.text_area :body, class: "textarea", placeholder: "Add a comment ..." %>
+      </p>
+    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <%= hidden_field_tag 'comment[commentable_id]', commentable.id %>
+          <%= hidden_field_tag 'comment[commentable_type]', commentable.class.to_s %>
+          <%= form.submit "Submit", class: "button is-info" %>
+        </div>
+      </div>
+    </nav>
+    <% end %>
+  </div>
+</article>

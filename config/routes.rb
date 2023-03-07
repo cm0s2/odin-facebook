@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :friends, only: [:index, :destroy]
   resources :posts
   resources :likes, only: %i[create destroy]
+  resources :comments, only: %i[create destroy]
 end
