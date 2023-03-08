@@ -1,0 +1,40 @@
+<h1>Profiles#edit</h1>
+<p>Find me in app/views/profiles/edit.html.erb</p>
+
+<%= form_with(model: @profile) do |form| %>
+  <% if @profile.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% @profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :name, class: "label" %>
+    <div class="control">
+      <%= form.text_field :name, class: "input" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: "label" %>
+    <div class="control">
+      <%= form.text_area :description, class: "textarea" %>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit "Submit", class: "button is-link" %>
+    </div>
+    <div class="control">
+      <%= link_to 'Cancel', url_for(:back), class: "button is-link is-light" %>
+    </div>
+  </div>
+<% end %>

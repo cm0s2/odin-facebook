@@ -1,10 +1,24 @@
+<figure class="image is-128x128">
+  <%= image_tag avatar_url_for(current_user, size: 128), class: "is-rounded" %>
+</figure>
+
 <h1><%= @user.name %></h1>
-<p>User profile goes here 😊</p>
+<p><%= @user.profile.description %></p>
+
+<% if @user == current_user %>
+<%= link_to "Edit profile", edit_profile_path, class: "button is-link" %>
+<% end %>
 
 <% unless @user == current_user || current_user.friends.include?(@user) %>
-<% unless current_user.pending_friends.include?(@user) %>
-  <%= link_to "Send friend request", friend_requests_path(friend_id: @user.id), data: {turbo_method: :post } %>
-<% else %>
-  <%= link_to "Withdraw friend request", friend_request_path(FriendRequest.find_by(friend_id: @user.id).id), data: {turbo_method: :delete } %>
+  <% unless current_user.pending_friends.include?(@user) %>
+    <%= link_to "Send friend request", friend_requests_path(friend_id: @user.id), data: {turbo_method: :post } %>
+  <% else %>
+    <%= link_to "Withdraw friend request", friend_request_path(FriendRequest.find_by(friend_id: @user.id).id), data: {turbo_method: :delete } %>
+  <% end %>
 <% end %>
+
+<h2>Posts</h2>
+
+<% @user.posts.each do |post| %>
+  <%= render post %>
 <% end %>

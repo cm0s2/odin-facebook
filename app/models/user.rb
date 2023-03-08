@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :create_default_profile
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,13 +16,22 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  has_one :profile, dependent: :destroy
+
+  def create_default_profile
+    create_profile(name: email, description: "Nothing here yet!")
+  end
+
   def remove_friend(friend)
     current_user.friends.destroy(friend)
   end
 
-  # TODO: Lägg till metod för att kolla om man är vän
   def name
-    email
+    if profile
+      profile.name || email
+    else
+      email
+    end
   end
   
   def is_friends_with?(friend)
