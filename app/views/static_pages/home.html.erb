@@ -1,0 +1,10 @@
+<h1>Home</h1>
+<p>Here are all the users 👇</p>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %> <% unless current_user.is_friend_or_pending_friend(user) %><%= link_to "Send friend request", friend_requests_path(friend_id: user.id), data: {turbo_method: :post }, class: "button is-link is-small" %><% end %>
+    </li>
+  <% end %>
+</ul>

@@ -33,6 +33,10 @@ class User < ApplicationRecord
       email
     end
   end
+
+  def is_friend_or_pending_friend(user)
+    pending_friends.include?(user) || friends.include?(user) || self == user
+  end
   
   def is_friends_with?(friend)
     pending_friends.include?(friend)
