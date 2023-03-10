@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'profiles/update'
 
   get 'friends/destroy'
-  devise_for :users, :controllers => { :registrations => "my_registrations" }
+  devise_for :users, :controllers => { registrations: "my_registrations", omniauth_callbacks: 'users/omniauth_callbacks' }
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
